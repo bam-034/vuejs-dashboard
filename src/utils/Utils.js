@@ -32,3 +32,10 @@ export const formatThousands = (value) => Intl.NumberFormat('en-US', {
   maximumSignificantDigits: 3,
   notation: 'compact',
 }).format(value);
+
+export const formatPosts = (value) => Intl.NumberFormat('en-GB', {
+  style: 'unit',
+  unit: 'gigabyte',
+  //maximumSignificantDigits: 3,
+  //notation: 'compact',
+}).format(value);

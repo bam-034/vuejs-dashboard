@@ -20,10 +20,10 @@
           <div class="sm:flex sm:justify-between sm:items-center mb-8">
 
             <!-- Left: Avatars -->
-            <DashboardAvatars />
+            <!--<DashboardAvatars />-->
 
             <!-- Right: Actions -->
-            <div class="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
+            <div class="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2" align="right">
 
               <!-- Filter button -->
               <FilterButton align="right" />

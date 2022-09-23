@@ -3,8 +3,9 @@
     <div class="px-5 pt-5">
       <header class="flex justify-between items-start mb-2">
         <!-- Icon -->
-        <img src="../../images/icon-01.svg" width="32" height="32" alt="Icon 01" />
-        <EditMenu align="right" class="relative inline-flex">
+        <fa :icon="['fab', 'instagram']" size="3x" />
+        <!--<img src="fa-brands fa-instagram" width="32" height="32" alt="Icon 01" /> -->
+        <!-- <EditMenu align="right" class="relative inline-flex">
           <li>
             <a class="font-medium text-sm text-gray-600 hover:text-gray-800 flex py-1 px-3" href="#0">Option 1</a>
           </li>
@@ -14,18 +15,18 @@
           <li>
             <a class="font-medium text-sm text-red-500 hover:text-red-600 flex py-1 px-3" href="#0">Remove</a>
           </li>
-        </EditMenu>
+        </EditMenu>-->
       </header>
-      <h2 class="text-lg font-semibold text-gray-800 mb-2">Acme Plus</h2>
-      <div class="text-xs font-semibold text-gray-400 uppercase mb-1">Sales</div>
+      <h2 class="text-xl font-semibold text-gray-800 mb-2">Total Posts</h2>
+      <div class="text-s font-semibold text-gray-400 uppercase mb-1">Posts</div>
       <div class="flex items-start">
-        <div class="text-3xl font-bold text-gray-800 mr-2">$24,780</div>
-        <div class="text-sm font-semibold text-white px-1.5 bg-green-500 rounded-full">+49%</div>
+        <div class="text-4xl font-bold text-gray-800 mr-2">24,780</div>
+        <!--<div class="text-sm font-semibold text-white px-1.5 bg-green-500 rounded-full">+49%</div>-->
       </div>
     </div>
     <!-- Chart built with Chart.js 3 -->
     <div class="grow">
-      <!-- Change the height attribute to adjust the chart height -->
+       <!--Change the height attribute to adjust the chart height -->
       <LineChart :data="chartData" width="389" height="128" />
     </div>
   </div>
@@ -62,7 +63,7 @@ export default {
         // Indigo line
         {
           data: [
-            732, 610, 610, 504, 504, 504, 349,
+            723, 610, 610, 504, 504, 504, 349,
             349, 504, 342, 504, 610, 391, 192,
             154, 273, 191, 191, 126, 263, 349,
             252, 423, 622, 470, 532,
