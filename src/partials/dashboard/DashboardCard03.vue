@@ -3,24 +3,13 @@
     <div class="px-5 pt-5">
       <header class="flex justify-between items-start mb-2">
         <!-- Icon -->
-        <img src="../../images/icon-03.svg" width="32" height="32" alt="Icon 03" />
-        <!-- <EditMenu align="right" class="relative inline-flex">
-          <li>
-            <a class="font-medium text-sm text-gray-600 hover:text-gray-800 flex py-1 px-3" href="#0">Option 1</a>
-          </li>
-          <li>
-            <a class="font-medium text-sm text-gray-600 hover:text-gray-800 flex py-1 px-3" href="#0">Option 2</a>
-          </li>
-          <li>
-            <a class="font-medium text-sm text-red-500 hover:text-red-600 flex py-1 px-3" href="#0">Remove</a>
-          </li>
-        </EditMenu> -->
+        <fa icon="users" size="3x"/>
       </header>
-      <h2 class="text-lg font-semibold text-gray-800 mb-2">Post per Hour</h2>
-      <div class="text-xs font-semibold text-gray-400 uppercase mb-1">Post</div>
+      <h2 class="text-lg font-semibold text-gray-800 mb-2">Tourists this Month</h2>
+      <div class="text-xs font-semibold text-gray-400 uppercase mb-1">Person</div>
       <div class="flex items-start">
-        <div class="text-3xl font-bold text-gray-800 mr-2">150</div>
-        <!-- <div class="text-sm font-semibold text-white px-1.5 bg-green-500 rounded-full">+29%</div> -->
+        <div class="text-3xl font-bold text-gray-800 mr-2">9,962</div>
+        <div class="text-sm font-semibold text-white px-1.5 bg-green-500 rounded-full">+29%</div>
       </div>
     </div>
     <!-- Chart built with Chart.js 3 -->

@@ -45,8 +45,8 @@
 
     <!-- Content -->
     <div class="relative">
-      <h1 class="text-2xl md:text-3xl text-gray-800 font-bold mb-1">Good afternoon, Acme Inc. 👋</h1>
-      <p>Here is what’s happening with your projects today:</p>
+      <h1 class="text-2xl md:text-3xl text-gray-800 font-bold mb-1">🏝️ Phuket Tourism Dashboard 🏝️</h1>
+      <p>Here is what’s happening in Phuket:</p>
     </div>
 
   </div>

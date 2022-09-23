@@ -52,7 +52,7 @@ export default {
             tooltip: {
               callbacks: {
                 title: () => false, // Disable tooltip title
-                label: (context) => formatValue(context.parsed.y),
+                //label: (context) => formatValue(context.parsed.y),
               },
             },
             legend: {
@@ -60,7 +60,7 @@ export default {
             },
           },
           interaction: {
-            intersect: false,
+            intersect: false, 
             mode: 'nearest',
           },
           maintainAspectRatio: false,
