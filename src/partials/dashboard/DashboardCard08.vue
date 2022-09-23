@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col col-span-full sm:col-span-6 bg-white shadow-lg rounded-sm border border-gray-200">
     <header class="px-5 py-4 border-b border-gray-100 flex items-center">
-      <h2 class="font-semibold text-gray-800">Sales Over Time (all stores)</h2>
+      <h2 class="font-semibold text-gray-800">Top Things in Phuket</h2>
     </header>
     <!-- Chart built with Chart.js 3 -->
     <!-- Change the height attribute to adjust the chart height -->
