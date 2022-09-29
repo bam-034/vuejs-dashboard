@@ -1,27 +1,35 @@
 <template>
   <div class="px-5 py-3">
-    <ul ref="legend" class="flex flex-wrap"></ul>
+    <div class="flex flex-wrap justify-between items-end">
+      <div class="flex items-start">
+        <!-- <div class="text-3xl font-bold text-gray-800 mr-2">1,482</div> -->
+        <!-- <div class="text-sm font-semibold text-white px-1.5 bg-yellow-500 rounded-full">-22%</div> -->
+      </div>
+      <div class="grow ml-2 mb-1">
+        <ul ref="legend" class="flex flex-wrap justify-end"></ul>
+      </div>
+    </div>
   </div>
+  <!-- Chart built with Chart.js 3 -->
   <div class="grow">
     <canvas ref="canvas" :data="data" :width="width" :height="height"></canvas>
-  </div>
+  </div>  
 </template>
 
 <script>
 import { ref, onMounted, onUnmounted } from 'vue'
-
 import {
-  Chart, BarController, BarElement, LinearScale, TimeScale, Tooltip, Legend,
+  Chart, LineController, LineElement, Filler, PointElement, LinearScale, TimeScale, Tooltip,
 } from 'chart.js'
 import 'chartjs-adapter-moment'
 
 // Import utilities
 import { tailwindConfig, formatThousands } from '../utils/Utils'
 
-Chart.register(BarController, BarElement, LinearScale, TimeScale, Tooltip, Legend)
+Chart.register(LineController, LineElement, Filler, PointElement, LinearScale, TimeScale, Tooltip)
 
 export default {
-  name: 'BarChart01',
+  name: 'LineChart03',
   props: ['data', 'width', 'height'],
   setup(props) {
 
@@ -32,21 +40,17 @@ export default {
     onMounted(() => {
       const ctx = canvas.value
       chart = new Chart(ctx, {
-        type: 'bar',
+        type: 'line',
         data: props.data,
         options: {
           layout: {
-            padding: {
-              top: 12,
-              bottom: 16,
-              left: 20,
-              right: 20,
-            },
+            padding: 20,
           },
           scales: {
             y: {
               grid: {
                 drawBorder: false,
+                beginAtZero: true,
               },
               ticks: {
                 maxTicksLimit: 5,
@@ -66,6 +70,10 @@ export default {
                 display: false,
                 drawBorder: false,
               },
+              ticks: {
+                autoSkipPadding: 10,
+                maxRotation: 0,
+              },
             },
           },
           plugins: {
@@ -83,9 +91,6 @@ export default {
             intersect: false,
             mode: 'nearest',
           },
-          animation: {
-            duration: 500,
-          },
           maintainAspectRatio: false,
           resizeDelay: 200,
         },
@@ -100,9 +105,9 @@ export default {
             }
             // Reuse the built-in legendItems generator
             const items = c.options.plugins.legend.labels.generateLabels(c)
-            items.forEach((item) => {
+            items.slice(0, 2).forEach((item) => {
               const li = document.createElement('li')
-              li.style.marginRight = tailwindConfig().theme.margin[4]
+              li.style.marginLeft = tailwindConfig().theme.margin[3]
               // Button element
               const button = document.createElement('button')
               button.style.display = 'inline-flex'
@@ -120,33 +125,18 @@ export default {
               box.style.borderRadius = tailwindConfig().theme.borderRadius.full
               box.style.marginRight = tailwindConfig().theme.margin[2]
               box.style.borderWidth = '3px'
-              box.style.borderColor = item.fillStyle
+              box.style.borderColor = c.data.datasets[item.datasetIndex].borderColor
               box.style.pointerEvents = 'none'
               // Label
-              const labelContainer = document.createElement('span')
-              labelContainer.style.display = 'flex'
-              labelContainer.style.alignItems = 'center'
-              const value = document.createElement('span')
-              value.style.color = tailwindConfig().theme.colors.gray[800]
-              value.style.fontSize = tailwindConfig().theme.fontSize['3xl'][0]
-              value.style.lineHeight = tailwindConfig().theme.fontSize['3xl'][1].lineHeight
-              value.style.fontWeight = tailwindConfig().theme.fontWeight.bold
-              value.style.marginRight = tailwindConfig().theme.margin[2]
-              value.style.pointerEvents = 'none'
               const label = document.createElement('span')
               label.style.color = tailwindConfig().theme.colors.gray[500]
               label.style.fontSize = tailwindConfig().theme.fontSize.sm[0]
               label.style.lineHeight = tailwindConfig().theme.fontSize.sm[1].lineHeight
-              const theValue = c.data.datasets[item.datasetIndex].data.reduce((a, b) => a + b, 0)
-              const valueText = document.createTextNode(formatThousands(theValue))
               const labelText = document.createTextNode(item.text)
-              value.appendChild(valueText)
               label.appendChild(labelText)
               li.appendChild(button)
               button.appendChild(box)
-              button.appendChild(labelContainer)
-              labelContainer.appendChild(value)
-              labelContainer.appendChild(label)
+              button.appendChild(label)
               ul.appendChild(li)
             })
           },

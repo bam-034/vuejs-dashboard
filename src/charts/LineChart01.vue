@@ -10,7 +10,7 @@ import {
 import 'chartjs-adapter-moment'
 
 // Import utilities
-import { tailwindConfig, formatValue } from '../utils/Utils'
+import { tailwindConfig, formatThousands } from '../utils/Utils'
 
 Chart.register(LineController, LineElement, Filler, PointElement, LinearScale, TimeScale, Tooltip)
 
@@ -50,10 +50,11 @@ export default {
           },
           plugins: {
             tooltip: {
-              callbacks: {
-                title: () => false, // Disable tooltip title
-                //label: (context) => formatValue(context.parsed.y),
-              },
+              display: true,
+              // callbacks: {
+              //   title: () => false, // Disable tooltip title
+              //   label: (context) => formatThousands(context.parsed.y),
+              // },
             },
             legend: {
               display: false,

@@ -3,13 +3,14 @@
     <div class="px-5 pt-5">
       <header class="flex justify-between items-start mb-2">
         <!-- Icon -->
-        <fa icon="users" size="3x"/>
+        <!-- <fa icon="users" size="3x"/> -->
+        <fa :icon= "['fab', 'instagram']" size= "3x"/>
       </header>
-      <h2 class="text-lg font-semibold text-gray-800 mb-2">Tourists this Month</h2>
-      <div class="text-xs font-semibold text-gray-400 uppercase mb-1">Person</div>
+      <h2 class="text-lg font-semibold text-gray-800 mb-2">New Posts Today</h2>
+      <div class="text-xs font-semibold text-gray-400 uppercase mb-1">Posts</div>
       <div class="flex items-start">
-        <div class="text-3xl font-bold text-gray-800 mr-2">9,962</div>
-        <div class="text-sm font-semibold text-white px-1.5 bg-green-500 rounded-full">+29%</div>
+        <div class="text-3xl font-bold text-gray-800 mr-2">1,567</div>
+        <!-- <div class="text-sm font-semibold text-white px-1.5 bg-green-500 rounded-full">+29%</div> -->
       </div>
     </div>
     <!-- Chart built with Chart.js 3 -->

@@ -39,3 +39,14 @@ export const formatPosts = (value) => Intl.NumberFormat('en-GB', {
   //maximumSignificantDigits: 3,
   //notation: 'compact',
 }).format(value);
+
+export const formatNormal = (value) => Intl.NumberFormat('en-US', {
+  style: 'decimal'
+}).format(value);
+
+export const formatPercent = (value) => Intl.NumberFormat('en-US', {
+  style: 'percentage'
+}).format(value);
+
+// export const xSelector = d => d.x;
+// export const ySelector = d => d.y;

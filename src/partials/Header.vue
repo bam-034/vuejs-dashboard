@@ -1,5 +1,5 @@
 <template>
-  <header class="sticky top-0 bg-slate-700  border-b border-gray-200 z-30">
+  <header class="sticky top-0 bg-white  border-b border-gray-200 z-30">
     <div class="px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16 -mb-px">
 
@@ -21,7 +21,7 @@
         <!-- Header: Right side -->
         <div class="flex items-center space-x-3">
 
-          <!-- <button
+          <button 
             class="w-8 h-8 flex items-center justify-center bg-gray-100 hover:bg-gray-200 transition duration-150 rounded-full ml-3"
             :class="{ 'bg-gray-200': searchModalOpen }"
             @click.stop="searchModalOpen = true"
@@ -34,11 +34,11 @@
             </svg>
           </button>          
           <SearchModal id="search-modal" searchId="search" :modalOpen="searchModalOpen" @open-modal="searchModalOpen = true" @close-modal="searchModalOpen = false" />
-          <!--<Notifications align="right" />-->
+          <!-- <Notifications align="right" /> -->
           <Help align="right" />
           <!-- Divider -->
-          <!-- <hr class="w-px h-6 bg-gray-200" />
-          <UserMenu align="right" />  -->
+          <hr class="w-px h-6 bg-gray-200" />
+          <!-- <UserMenu align="right" />  -->
 
         </div>
 

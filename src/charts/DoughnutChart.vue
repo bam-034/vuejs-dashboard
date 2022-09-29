@@ -17,7 +17,7 @@ import {
 import 'chartjs-adapter-moment'
 
 // Import utilities
-import { tailwindConfig } from '../utils/Utils'
+import { tailwindConfig, formatPercent} from '../utils/Utils'
 
 Chart.register(DoughnutController, ArcElement, TimeScale, Tooltip)
 
@@ -44,6 +44,11 @@ export default {
             legend: {
               display: false,
             },
+            // tooltip: {
+            //   callbacks: {
+            //     title: () => false, // Disable tooltip title
+            //     label: (context) => formatPercent(context.parsed.y),
+            //   },
           },
           interaction: {
             intersect: false,
@@ -77,7 +82,7 @@ export default {
               button.style.borderColor = tailwindConfig().theme.colors.gray[200]
               button.style.color = tailwindConfig().theme.colors.gray[500]
               button.style.boxShadow = tailwindConfig().theme.boxShadow.md
-              button.style.opacity = item.hidden ? '.3' : ''
+              button.style.opacity = item.hidden ? '.3' : '' 
               button.onclick = () => {
                 c.toggleDataVisibility(item.index, !item.index)
                 c.update()

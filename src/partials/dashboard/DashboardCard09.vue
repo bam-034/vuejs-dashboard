@@ -1,29 +1,31 @@
 <template>
   <div class="flex flex-col col-span-full sm:col-span-6 bg-white shadow-lg rounded-sm border border-gray-200">
-    <header class="px-5 py-4 border-b border-gray-100 flex items-center">
-      <h2 class="font-semibold text-gray-800">Sales VS Refunds</h2>
-      <Tooltip class="ml-2" size="lg">
-        <div class="text-sm">Sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</div>
-      </Tooltip>
+    <header class="px-5 py-4 border-b border-gray-100 flex justify-between">
+      <h2 class="text-xl font-semibold text-gray-800 mb-2">Monthly Comparison Location</h2>
+        <EditMenu align="right" class="relative inline-flex">
+          <li>
+            <a class="font-medium text-sm text-gray-600 hover:text-blue-800 flex py-1 px-3" href="#0">August 2022</a>
+          </li>
+          <li>
+            <a class="font-medium text-sm text-gray-600 hover:text-blue-800 flex py-1 px-3" href="#0">September 2022</a>
+          </li>
+          <li>
+            <a class="font-medium text-sm text-gray-500 hover:text-blue-600 flex py-1 px-3" href="#0">October 2022</a>
+          </li>
+        </EditMenu>
     </header>
-    <div class="px-5 py-3">
-      <div class="flex items-start">
-        <div class="text-3xl font-bold text-gray-800 mr-2">+$6,796</div>
-        <div class="text-sm font-semibold text-white px-1.5 bg-yellow-500 rounded-full">-34%</div>
-      </div>
-    </div>
     <!-- Chart built with Chart.js 3 -->
-    <div class="grow">
-      <!-- Change the height attribute to adjust the chart height -->
-      <BarChart :data="chartData" width="595" height="248" />
-    </div>
-  </div>  
+    <!-- Change the height attribute to adjust the chart height -->
+    <BarChart :data="chartData" width="595" height="248" />
+  </div>
 </template>
+
 
 <script>
 import { ref } from 'vue'
-import Tooltip from '../../components/Tooltip.vue'
-import BarChart from '../../charts/BarChart02.vue'
+//import Tooltip from '../../components/Tooltip.vue'
+import BarChart from '../../charts/BarChart04.vue'
+import EditMenu from '../../components/DropdownEditMenu.vue'
 
 // Import utilities
 import { tailwindConfig } from '../../utils/Utils'
@@ -31,35 +33,35 @@ import { tailwindConfig } from '../../utils/Utils'
 export default {
   name: 'DashboardCard09',
   components: {
-    Tooltip,
     BarChart,
+    EditMenu,
   },
   setup() {
     const chartData = ref({
       labels: [
-        '12-01-2020', '01-01-2021', '02-01-2021',
-        '03-01-2021', '04-01-2021', '05-01-2021',
+        'Big Buddha', 'Wat Chalong', 'Kata Beach',
+        'Monkey Hill', 'Phuket Town', 'Rawai Village',
       ],
       datasets: [
-        // Light blue bars
+        //Light blue bars
         {
-          label: 'Stack 1',
+          label: 'Previous Posts',
           data: [
-            6200, 9200, 6600, 8800, 5200, 9200,
+            800, 1600, 900, 1300, 1950, 1700,
           ],
-          backgroundColor: tailwindConfig().theme.colors.indigo[500],
-          hoverBackgroundColor: tailwindConfig().theme.colors.indigo[600],
+          backgroundColor: tailwindConfig().theme.colors.blue[400],
+          hoverBackgroundColor: tailwindConfig().theme.colors.blue[500],
           barPercentage: 0.66,
           categoryPercentage: 0.66,
         },
-        // Blue bars
+        //Blue bars
         {
-          label: 'Stack 2',
+          label: 'Current Posts',
           data: [
-            -4000, -2600, -5350, -4000, -7500, -2000,
+            4900, 2600, 5350, 4800, 5200, 4800,
           ],
-          backgroundColor: tailwindConfig().theme.colors.indigo[200],
-          hoverBackgroundColor: tailwindConfig().theme.colors.indigo[300],
+          backgroundColor: tailwindConfig().theme.colors.indigo[500],
+          hoverBackgroundColor: tailwindConfig().theme.colors.indigo[600],
           barPercentage: 0.66,
           categoryPercentage: 0.66,
         },
@@ -68,7 +70,7 @@ export default {
 
     return {
       chartData,
-    } 
+    }    
   }
 }
 </script>

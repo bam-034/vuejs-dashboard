@@ -21,7 +21,7 @@ import { tailwindConfig, formatThousands } from '../utils/Utils'
 Chart.register(BarController, BarElement, LinearScale, TimeScale, Tooltip, Legend)
 
 export default {
-  name: 'BarChart01',
+  name: 'BarChart04',
   props: ['data', 'width', 'height'],
   setup(props) {
 

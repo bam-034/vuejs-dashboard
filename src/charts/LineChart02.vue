@@ -2,8 +2,9 @@
   <div class="px-5 py-3">
     <div class="flex flex-wrap justify-between items-end">
       <div class="flex items-start">
-        <div class="text-3xl font-bold text-gray-800 mr-2">$1,482</div>
-        <div class="text-sm font-semibold text-white px-1.5 bg-yellow-500 rounded-full">-22%</div>
+        <div class="text-3xl font-bold text-gray-800 mr-2">1,482</div>
+        <div class="text-sm font-semibold text-gray-400 my-2">Labels</div>
+        <!-- <div class="text-sm font-semibold text-white px-1.5 bg-yellow-500 rounded-full">-22%</div> -->
       </div>
       <div class="grow ml-2 mb-1">
         <ul ref="legend" class="flex flex-wrap justify-end"></ul>
@@ -24,7 +25,7 @@ import {
 import 'chartjs-adapter-moment'
 
 // Import utilities
-import { tailwindConfig, formatValue } from '../utils/Utils'
+import { tailwindConfig, formatThousands } from '../utils/Utils'
 
 Chart.register(LineController, LineElement, Filler, PointElement, LinearScale, TimeScale, Tooltip)
 
@@ -54,24 +55,24 @@ export default {
               },
               ticks: {
                 maxTicksLimit: 5,
-                callback: (value) => formatValue(value),
+                callback: (value) => formatThousands(value),
               },
             },
             x: {
-              type: 'time',
-              time: {
-                parser: 'MM-DD-YYYY',
-                unit: 'month',
-                displayFormats: {
-                  month: 'MMM YY',
-                },
-              },
+              // type: 'time',
+              // time: {
+              //   parser: 'MM-DD-YYYY',
+              //   unit: 'month',
+              //   displayFormats: {
+              //     month: 'MMM YY',
+              //   },
+              // },
               grid: {
                 display: false,
                 drawBorder: false,
               },
               ticks: {
-                autoSkipPadding: 48,
+                autoSkipPadding: 28,
                 maxRotation: 0,
               },
             },
@@ -83,7 +84,7 @@ export default {
             tooltip: {
               callbacks: {
                 title: () => false, // Disable tooltip title
-                label: (context) => formatValue(context.parsed.y),
+                label: (context) => formatThousands(context.parsed.y),
               },
             },
           },
@@ -134,9 +135,9 @@ export default {
               label.style.lineHeight = tailwindConfig().theme.fontSize.sm[1].lineHeight
               const labelText = document.createTextNode(item.text)
               label.appendChild(labelText)
-              li.appendChild(button)
-              button.appendChild(box)
-              button.appendChild(label)
+              // li.appendChild(button)
+              // button.appendChild(box)
+              // button.appendChild(label)
               ul.appendChild(li)
             })
           },

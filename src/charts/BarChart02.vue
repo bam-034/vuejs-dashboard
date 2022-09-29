@@ -10,7 +10,7 @@ import {
 import 'chartjs-adapter-moment'
 
 // Import utilities
-import { formatValue } from '../utils/Utils'
+import { formatThousands } from '../utils/Utils'
 
 Chart.register(BarController, BarElement, LinearScale, TimeScale, Tooltip, Legend)
 
@@ -45,7 +45,7 @@ export default {
               beginAtZero: true,
               ticks: {
                 maxTicksLimit: 5,
-                callback: (value) => formatValue(value),
+                callback: (value) => formatThousands(value),
               },
             },
             x: {
@@ -75,7 +75,7 @@ export default {
             tooltip: {
               callbacks: {
                 title: () => false, // Disable tooltip title
-                label: (context) => formatValue(context.parsed.y),
+                label: (context) => formatThousands(context.parsed.y),
               },
             },
           },
