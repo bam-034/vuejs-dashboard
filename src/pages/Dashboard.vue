@@ -54,7 +54,7 @@
             <!-- Line chart (Real Time Value) -->
             <!-- <DashboardCard05 /> -->
             <!-- Doughnut chart (Top Countries) -->
-            <!-- <DashboardCard06 /> -->
+            <DashboardCard06 />
             <!-- Table (Top Channels) -->
             <!-- <DashboardCard07 /> -->
             <!-- Line chart (Sales Over Time) -->

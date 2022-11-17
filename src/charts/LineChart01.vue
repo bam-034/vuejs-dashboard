@@ -42,7 +42,7 @@ export default {
             x: {
               type: 'time',
               time: {
-                parser: 'MM-DD-YYYY',
+                parser: 'MM-YYYY',
                 unit: 'month',
               },
               display: false,
