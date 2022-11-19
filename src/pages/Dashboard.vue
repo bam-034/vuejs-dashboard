@@ -23,12 +23,12 @@
             <!--<DashboardAvatars />-->
 
             <!-- Right: Actions -->
-            <div class="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2" align="right">
+            <!-- <div class="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2" align="right"> -->
 
               <!-- Filter button -->
               <!-- <FilterButton align="right" /> -->
               <!-- Datepicker built with flatpickr -->
-              <Datepicker align="right" />
+              <!-- <Datepicker align="right" /> -->
               <!-- Add view button -->
               <!-- <button class="btn bg-indigo-500 hover:bg-indigo-600 text-white">
                   <svg class="w-4 h-4 fill-current opacity-50 shrink-0" viewBox="0 0 16 16">
@@ -36,7 +36,7 @@
                   </svg>
                   <span class="hidden xs:block ml-2">Add view</span>
               </button> -->
-            </div>
+            <!-- </div> -->
 
           </div>
 
@@ -60,7 +60,7 @@
             <!-- Line chart (Sales Over Time) -->
             <!-- <DashboardCard08 /> -->
             <!-- Stacked bar chart (Sales VS Refunds) -->
-            <DashboardCard09 />
+            <!-- <DashboardCard09 /> -->
             <!-- Card (Customers)  -->
             <!-- <DashboardCard10 /> -->
             <!-- Card (Reasons for Refunds)   -->

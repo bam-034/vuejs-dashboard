@@ -101,7 +101,8 @@ export default {
   },
   async mounted() {
     console.log("AAA", this.count);
-    const url = `http://172.26.201.159:3300/posts/landmarks`;
+    //const url = `http://172.26.201.159:3300/posts/landmarks`;
+    const url = `http://localhost:3300/posts/landmarks`;
     const res = await axios.get(url);
     console.log("", res.data);
     const labels = [];

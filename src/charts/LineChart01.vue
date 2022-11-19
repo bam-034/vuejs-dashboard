@@ -3,29 +3,43 @@
 </template>
 
 <script>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted } from "vue";
 import {
-  Chart, LineController, LineElement, Filler, PointElement, LinearScale, TimeScale, Tooltip,
-} from 'chart.js'
-import 'chartjs-adapter-moment'
+  Chart,
+  LineController,
+  LineElement,
+  Filler,
+  PointElement,
+  LinearScale,
+  TimeScale,
+  Tooltip,
+} from "chart.js";
+import "chartjs-adapter-moment";
 
 // Import utilities
-import { tailwindConfig, formatThousands } from '../utils/Utils'
+import { tailwindConfig, formatThousands } from "../utils/Utils";
 
-Chart.register(LineController, LineElement, Filler, PointElement, LinearScale, TimeScale, Tooltip)
+Chart.register(
+  LineController,
+  LineElement,
+  Filler,
+  PointElement,
+  LinearScale,
+  TimeScale,
+  Tooltip
+);
 
 export default {
-  name: 'LineChart01',
-  props: ['data', 'width', 'height'],
+  name: "LineChart01",
+  props: ["data", "width", "height"],
   setup(props) {
+    const canvas = ref(null);
+    let chart = null;
 
-    const canvas = ref(null)
-    let chart = null
-    
     onMounted(() => {
-      const ctx = canvas.value
+      const ctx = canvas.value;
       chart = new Chart(ctx, {
-        type: 'line',
+        type: "line",
         data: props.data,
         options: {
           chartArea: {
@@ -40,41 +54,41 @@ export default {
               beginAtZero: true,
             },
             x: {
-              type: 'time',
+              type: "time",
               time: {
-                parser: 'MM-YYYY',
-                unit: 'month',
+                parser: "MM-YYYY",
+                unit: "month",
               },
-              display: false,
+              display: true,
             },
           },
           plugins: {
             tooltip: {
               display: true,
-              // callbacks: {
-              //   title: () => false, // Disable tooltip title
-              //   label: (context) => formatThousands(context.parsed.y),
-              // },
+              callbacks: {
+                title: () => false, // Disable tooltip title
+                label: (context) => formatThousands(context.parsed.y),
+              },
             },
             legend: {
               display: false,
             },
           },
           interaction: {
-            intersect: false, 
-            mode: 'nearest',
+            intersect: false,
+            mode: "nearest",
           },
           maintainAspectRatio: false,
           resizeDelay: 200,
         },
-      })
-    })
+      });
+    });
 
-    onUnmounted(() => chart.destroy())
+    onUnmounted(() => chart.destroy());
 
     return {
       canvas,
-    }
-  }
-}
+    };
+  },
+};
 </script>

@@ -31,13 +31,15 @@
           <fa :icon="['fab', 'instagram']" size="3x" />
         </header>
         <h2 class="text-xl font-semibold text-gray-800 mb-2">
-          Posts this Month
+          Posts this Year
         </h2>
         <div class="text-s font-semibold text-gray-400 uppercase mb-1">
           Posts
         </div>
         <div class="flex items-start">
-          <div class="text-4xl font-bold text-gray-800 mr-2">{{ posts }}</div>
+          <div class="text-4xl font-bold text-gray-800 mr-2">
+            {{ yearlyPosts }}
+          </div>
         </div>
       </div>
       <div class="px-5 pt-5">
@@ -46,20 +48,27 @@
           <fa :icon="['fab', 'instagram']" size="3x" />
         </header>
         <h2 class="text-xl font-semibold text-gray-800 mb-2">
-          New Posts Today
+          Posts this Month
         </h2>
         <div class="text-s font-semibold text-gray-400 uppercase mb-1">
           Posts
         </div>
         <div class="flex items-start">
-          <div class="text-4xl font-bold text-gray-800 mr-2">1,567</div>
+          <div class="text-4xl font-bold text-gray-800 mr-2">
+            {{ currentMonthPosts }}
+          </div>
         </div>
       </div>
     </div>
     <!-- Chart built with Chart.js 3 -->
     <div class="grow">
       <!--Change the height attribute to adjust the chart height -->
-      <LineChart v-if="chartData.datasets[0].data.length > 0" :data="chartData" width="389" height="128" />
+      <LineChart
+        v-if="chartData.datasets[0].data.length > 0"
+        :data="chartData"
+        width="389"
+        height="128"
+      />
     </div>
   </div>
 </template>
@@ -80,6 +89,8 @@ export default {
   },
   setup() {
     const posts = ref([]);
+    const yearlyPosts = ref([]);
+    const currentMonthPosts = ref([]);
     const chartData = ref({
       labels: [
         "01-2021",
@@ -109,9 +120,9 @@ export default {
           )}, 0.08)`,
           borderColor: tailwindConfig().theme.colors.indigo[500],
           borderWidth: 2,
-          tension: 0,
+          tension: 0.4,
           pointRadius: 0,
-          pointHoverRadius: 3,
+          pointHoverRadius: 5,
           pointBackgroundColor: tailwindConfig().theme.colors.indigo[500],
           clip: 20,
         },
@@ -123,13 +134,25 @@ export default {
       posts,
     };
   },
-  
+
   async mounted() {
     //api caling
-    const res_posts = await axios.get("http://172.26.201.159:3300/posts/total");
-    this.posts = res_posts.data.rows[0].count;
+    //const res_posts = await axios.get("http://172.26.201.159:3300/posts/total");
+    const total_posts = await axios.get("http://localhost:3300/posts/total");
+    this.posts = total_posts.data.rows[0].count;
 
-    const graphURL = `http://172.26.201.159:3300/posts/monthly`;
+    const yearly_posts = await axios.get(
+      "http://localhost:3300/posts/year/2022"
+    );
+    this.yearlyPosts = yearly_posts.data.rows[0].count;
+
+    const currnet_month_posts = await axios.get(
+      "http://localhost:3300/posts/thismonth"
+    );
+    this.currentMonthPosts = currnet_month_posts.data.rows[0].count;
+
+    //const graphURL = `http://172.26.201.159:3300/posts/monthly`;
+    const graphURL = `http://localhost:3300/posts/monthly`;
     const resp = await axios.get(graphURL);
 
     console.log(resp.data);
