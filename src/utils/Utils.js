@@ -48,5 +48,6 @@ export const formatPercent = (value) => Intl.NumberFormat('en-US', {
   style: 'percentage'
 }).format(value);
 
+
 // export const xSelector = d => d.x;
 // export const ySelector = d => d.y;

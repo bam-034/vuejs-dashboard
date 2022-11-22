@@ -101,15 +101,15 @@ export default {
   },
   async mounted() {
     console.log("AAA", this.count);
-    //const url = `http://172.26.201.159:3300/posts/landmarks`;
-    const url = `http://localhost:3300/posts/landmarks`;
+    const url = `http://172.26.117.18:3001/api/v1/posts/landmarks`;
+    //const url = `http://localhost:3300/posts/landmarks`;
     const res = await axios.get(url);
     console.log("", res.data);
     const labels = [];
     const total = [];
     for (let index = 0; index < 10; index++) {
-      labels.push(res.data.rows[index].landmark);
-      total.push(Number(res.data.rows[index].total_post));
+      labels.push(res.data[index].landmark);
+      total.push(Number(res.data[index].total_post));
       // this.chartData.labels.push(res.data.rows[index].landmark);
       // this.chartData.datasets[0].data.push(res.data.rows[index].total_post)
     }

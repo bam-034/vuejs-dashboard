@@ -137,30 +137,30 @@ export default {
 
   async mounted() {
     //api caling
-    //const res_posts = await axios.get("http://172.26.201.159:3300/posts/total");
-    const total_posts = await axios.get("http://localhost:3300/posts/total");
-    this.posts = total_posts.data.rows[0].count;
+    const res_posts = await axios.get("http://172.26.117.18:3001/api/v1/posts/total");
+    //const total_posts = await axios.get("http://localhost:3300/posts/total");
+    this.posts = res_posts.data[0].count;
 
     const yearly_posts = await axios.get(
-      "http://localhost:3300/posts/year/2022"
+      "http://172.26.117.18:3001/api/v1/posts/year/2022"
     );
-    this.yearlyPosts = yearly_posts.data.rows[0].count;
+    this.yearlyPosts = yearly_posts.data[0].count;
 
     const currnet_month_posts = await axios.get(
-      "http://localhost:3300/posts/thismonth"
+      "http://172.26.117.18:3001/api/v1/posts/month/11"
     );
-    this.currentMonthPosts = currnet_month_posts.data.rows[0].count;
+    this.currentMonthPosts = currnet_month_posts.data[0].count;
 
-    //const graphURL = `http://172.26.201.159:3300/posts/monthly`;
-    const graphURL = `http://localhost:3300/posts/monthly`;
+    const graphURL = `http://172.26.117.18:3001/api/v1/posts/monthly`;
+    //const graphURL = `http://localhost:3300/posts/monthly`;
     const resp = await axios.get(graphURL);
 
     console.log(resp.data);
     const monthlyPosts = [];
 
     for (let index = 0; index <= 15; index++) {
-      console.log(resp.data.rows[index]);
-      monthlyPosts.push(Number(resp.data.rows[index].count));
+      console.log(resp.data[index]);
+      monthlyPosts.push(Number(resp.data[index].count));
     }
     this.chartData.datasets[0].data = monthlyPosts;
   },

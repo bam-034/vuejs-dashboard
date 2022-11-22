@@ -17,7 +17,7 @@ const router = createRouter({
       component: Wordcloud
     },
     {
-      path: '/mapbubble',
+      path: '/wordcloudlocation',
       component: Mapbubble
     },
   ]
