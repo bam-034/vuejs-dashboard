@@ -137,6 +137,7 @@ export default {
 
   async mounted() {
     //api caling
+    
     const res_posts = await axios.get("http://172.26.117.18:3001/api/v1/posts/total");
     //const total_posts = await axios.get("http://localhost:3300/posts/total");
     this.posts = res_posts.data[0].count;

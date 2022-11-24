@@ -29,6 +29,7 @@
               <!-- <FilterButton align="right" /> -->
               <!-- Datepicker built with flatpickr -->
               <!-- <Datepicker align="right" /> -->
+              <p>Last Updated: {{timestamp}}</p>
               <!-- Add view button -->
               <!-- <button class="btn bg-indigo-500 hover:bg-indigo-600 text-white">
                   <svg class="w-4 h-4 fill-current opacity-50 shrink-0" viewBox="0 0 16 16">
@@ -132,9 +133,14 @@ export default {
   setup() {
 
     const sidebarOpen = ref(false)
+    const today = new Date();
+    const date = today.getFullYear() + '-' + (today.getMonth()+1) + '-' + today.getDate();
+    const time = today.getHours() + ":00";
+    const timestamp = date + ' ' + time;
 
     return {
       sidebarOpen,
+      timestamp,
     }  
   }
 }

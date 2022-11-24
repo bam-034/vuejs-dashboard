@@ -100,7 +100,6 @@ export default {
     };
   },
   async mounted() {
-    console.log("AAA", this.count);
     const url = `http://172.26.117.18:3001/api/v1/posts/landmarks`;
     //const url = `http://localhost:3300/posts/landmarks`;
     const res = await axios.get(url);
