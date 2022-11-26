@@ -4,19 +4,19 @@
       flex flex-col
       col-span-full
       sm:col-span-6
-      xl:col-span-4
       bg-white
       shadow-lg
       rounded-sm
       border border-gray-200
     "
   >
+  <!-- xl:col-span-4 -->
     <header class="px-5 py-4 border-b border-gray-100">
-      <h2 class="font-semibold text-gray-800">Top Objects</h2>
+      <h2 class="text-xl font-semibold text-gray-800 mb-2">Top Objects</h2>
     </header>
     <!-- Chart built with Chart.js 3 -->
     <!-- Change the height attribute to adjust the chart height -->
-    <DoughnutChart v-if="chartData.labels.length > 0" :data="chartData" width="389" height="260" />
+    <DoughnutChart v-if="chartData.labels.length > 0" :data="chartData" width="389" height="360" />
   </div>
 </template>
 
