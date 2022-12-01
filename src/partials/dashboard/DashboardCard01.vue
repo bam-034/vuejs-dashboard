@@ -80,6 +80,7 @@ import EditMenu from "../../components/DropdownEditMenu.vue";
 // Import utilities
 import { tailwindConfig, hexToRGB } from "../../utils/Utils";
 import axios from "axios";
+import { io } from "socket.io-client";
 
 export default {
   name: "DashboardCard01",
@@ -88,9 +89,9 @@ export default {
     EditMenu,
   },
   setup() {
-    const posts = ref([]);
-    const yearlyPosts = ref([]);
-    const currentMonthPosts = ref([]);
+    const posts = ref(0);
+    const yearlyPosts = ref(0);
+    const currentMonthPosts = ref(0);
     const chartData = ref({
       labels: [
         "01-2021",
@@ -132,13 +133,38 @@ export default {
     return {
       chartData,
       posts,
+      yearlyPosts,
+      currentMonthPosts
     };
   },
 
   async mounted() {
+    const socket = io("192.168.11.7:3003");
+    socket.on("updated", async (graph1) => {
+      //console.log(graph1);
+      const res_posts = await axios.get(
+        "http://172.26.117.18:3001/api/v1/posts/total"
+      );
+      this.posts = res_posts.data[0].count;
+
+      const yearly_posts = await axios.get(
+        "http://172.26.117.18:3001/api/v1/posts/year/2022"
+      );
+      this.yearlyPosts = yearly_posts.data[0].count;
+
+      const currnet_month_posts = await axios.get(
+        "http://172.26.117.18:3001/api/v1/posts/thismonth"
+      );
+      if(currnet_month_posts.data.length == 0) 
+        this.currentMonthPosts = 0
+      else 
+        this.currentMonthPosts = currnet_month_posts.data[0].count;
+    });
     //api caling
-    
-    const res_posts = await axios.get("http://172.26.117.18:3001/api/v1/posts/total");
+
+    const res_posts = await axios.get(
+      "http://172.26.117.18:3001/api/v1/posts/total"
+    );
     //const total_posts = await axios.get("http://localhost:3300/posts/total");
     this.posts = res_posts.data[0].count;
 
@@ -148,9 +174,12 @@ export default {
     this.yearlyPosts = yearly_posts.data[0].count;
 
     const currnet_month_posts = await axios.get(
-      "http://172.26.117.18:3001/api/v1/posts/month/11"
+      "http://172.26.117.18:3001/api/v1/posts/thismonth"
     );
-    this.currentMonthPosts = currnet_month_posts.data[0].count;
+    if(currnet_month_posts.data.length == 0) 
+        this.currentMonthPosts = 0
+      else 
+        this.currentMonthPosts = currnet_month_posts.data[0].count;
 
     const graphURL = `http://172.26.117.18:3001/api/v1/posts/monthly`;
     //const graphURL = `http://localhost:3300/posts/monthly`;

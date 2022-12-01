@@ -71,6 +71,7 @@ import EditMenu from "../../components/DropdownEditMenu.vue";
 // Import utilities
 import { tailwindConfig } from "../../utils/Utils";
 import axios from "axios";
+import { io } from "socket.io-client"
 
 export default {
   name: "DashboardCard03",
@@ -100,6 +101,9 @@ export default {
     };
   },
   async mounted() {
+    //const socket = io("ws://localhost:3003")
+    //socket.io("dashboard04", (arg) =>{
+
     const url = `http://172.26.117.18:3001/api/v1/posts/landmarks`;
     //const url = `http://localhost:3300/posts/landmarks`;
     const res = await axios.get(url);
@@ -114,6 +118,8 @@ export default {
     }
     this.chartData.labels = labels;
     this.chartData.datasets[0].data = total;
+
+    //});
   },
 };
 </script>

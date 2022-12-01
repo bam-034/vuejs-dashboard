@@ -24,7 +24,6 @@
 import { ref } from "vue";
 import DoughnutChart from "../../charts/DoughnutChart.vue";
 import EditMenu from "../../components/DropdownEditMenu.vue";
-
 // Import utilities
 import { tailwindConfig } from "../../utils/Utils";
 import axios from "axios";
